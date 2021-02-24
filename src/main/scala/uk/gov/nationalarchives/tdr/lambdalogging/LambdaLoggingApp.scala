@@ -8,4 +8,6 @@ object LambdaLoggingApp extends App {
   logger.info("Info-level hello")
   logger.warn("Warn-level hello")
   logger.error("Error-level hello")
+
+  logger.error("How are errors logged?", new RuntimeException("just testing how a stacktrace is logged"))
 }
