@@ -3,7 +3,7 @@
 
     <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <customFields>{"application":"log-odyssey"}</customFields>
+            <customFields>{"application":"example-lambda-logging"}</customFields>
         </encoder>
     </appender>
 
