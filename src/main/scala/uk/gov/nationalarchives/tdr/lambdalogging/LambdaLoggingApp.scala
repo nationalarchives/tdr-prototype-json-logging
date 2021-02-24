@@ -1,13 +1,26 @@
 package uk.gov.nationalarchives.tdr.lambdalogging
 
-import com.typesafe.scalalogging.Logger
+import com.amazonaws.services.lambda.runtime.{ClientContext, CognitoIdentity, Context, LambdaLogger}
 
 object LambdaLoggingApp extends App {
-  val logger: Logger = Logger[LambdaLoggingApp.type]
+  val lambda = new Lambda
 
-  logger.info("Info-level hello")
-  logger.warn("Warn-level hello")
-  logger.error("Error-level hello")
+  val input = new java.util.HashMap[String, String]()
+  val context = new FakeLambdaContext
 
-  logger.error("How are errors logged?", new RuntimeException("just testing how a stacktrace is logged"))
+  lambda.handleRequest(input, context)
+}
+
+class FakeLambdaContext extends Context {
+  override def getAwsRequestId: String = "fake request ID"
+  override def getLogGroupName: String = "fake log group ID"
+  override def getLogStreamName: String = "fake log stream name"
+  override def getFunctionName: String = "fake function name"
+  override def getFunctionVersion: String = "fake function version"
+  override def getInvokedFunctionArn: String = "fake invoked function ARN"
+  override def getIdentity: CognitoIdentity = null
+  override def getClientContext: ClientContext = null
+  override def getRemainingTimeInMillis: Int = 0
+  override def getMemoryLimitInMB: Int = 0
+  override def getLogger: LambdaLogger = null
 }
