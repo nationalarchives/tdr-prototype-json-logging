@@ -5,7 +5,7 @@ import java.util
 import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
 import com.typesafe.scalalogging.Logger
 import org.slf4j.MarkerFactory
-
+import net.logstash.logback.argument.StructuredArguments.keyValue
 
 class Lambda extends RequestHandler[java.util.Map[String, String], String] {
   val logger: Logger = Logger[Lambda]
@@ -19,6 +19,9 @@ class Lambda extends RequestHandler[java.util.Map[String, String], String] {
 
     val marker = MarkerFactory.getMarker("markerName")
     logger.info(marker, "some info message with a marker")
+
+    val structuredLog = keyValue("someKey", "someValue")
+    logger.info("Stuff", structuredLog)
 
     "This is the Lambda return value"
   }
