@@ -1,3 +1,4 @@
+
 name := "example-lambda-logging"
 
 version := "0.1"
@@ -11,3 +12,10 @@ libraryDependencies ++= Seq(
 
   "com.amazonaws" % "aws-lambda-java-core" % "1.2.1"
 )
+
+assemblyJarName in assembly := "example-lambda-logging.jar"
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs@_*) => MergeStrategy.discard
+  case _ => MergeStrategy.first
+}
