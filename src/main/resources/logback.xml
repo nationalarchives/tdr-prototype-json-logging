@@ -2,18 +2,9 @@
 <configuration>
 
     <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
-<!--        <encoder>-->
-<!--            <pattern>%msg%n</pattern>-->
-<!--        </encoder>-->
-
-
-        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
-            <jsonFormatter
-                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
-                <prettyPrint>true</prettyPrint>
-            </jsonFormatter>
-            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
-        </layout>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"application":"log-odyssey"}</customFields>
+        </encoder>
     </appender>
 
     <logger name="jsonLogger" level="TRACE">

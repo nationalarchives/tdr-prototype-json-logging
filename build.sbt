@@ -12,5 +12,6 @@ libraryDependencies ++= Seq(
   "ch.qos.logback.contrib" % "logback-json-classic" % "0.1.5",
   "ch.qos.logback.contrib" % "logback-jackson" % "0.1.5",
   // TODO: Not the latest version
-  "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.3"
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.3",
+  "net.logstash.logback" % "logstash-logback-encoder" % "6.6"
 )
