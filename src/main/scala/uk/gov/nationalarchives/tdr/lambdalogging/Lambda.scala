@@ -13,6 +13,8 @@ class Lambda extends RequestHandler[java.util.Map[String, String], String] {
   val logger: Logger = Logger[Lambda]
 
   override def handleRequest(input: util.Map[String, String], context: Context): String = {
+    logger.trace("Trace-level hello")
+    logger.debug("Debug-level hello")
     logger.info("Info-level hello")
     logger.warn("Warn-level hello")
     logger.error("Error-level hello")
